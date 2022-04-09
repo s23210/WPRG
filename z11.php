@@ -8,21 +8,14 @@
 </head>
 <body>
 <?php
-function isPangram($string) {
-    $string = strtolower($string);
-    $string = str_replace(' ', '', $string);
+function isPangram($str) {
     $alphabet = range('a', 'z');
-    $string = str_split($string);
-    $string = array_diff($string, $alphabet);
-    if (empty($string)) {
-        return "true";
-    } else {
-        return "false";
-    }
+    $a_sentence = str_split(strtolower($str));
+    return empty(array_diff($alphabet, $a_sentence));
 }
 $pangram = "The quick brown fox jumps over the lazy dog";
-$not_a_pangram = "The quick brown fox jumps over the lazy dog.";
-echo isPangram($pangram);
+$not_a_pangram = "abc";
+echo isPangram($not_a_pangram) ? "Yes" : "No";
 ?>
 </body>
 </html>
